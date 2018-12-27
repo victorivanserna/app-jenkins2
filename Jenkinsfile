@@ -3,6 +3,7 @@ pipeline {
 	stages{
 		stage('Build') {
 			steps{
+				sh 'whoami'
 				sh 'cat /etc/passwd | cut -d":" -f1'
 				sh 'docker build -t app .'
 			}
