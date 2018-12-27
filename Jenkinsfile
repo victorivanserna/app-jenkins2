@@ -5,6 +5,7 @@ pipeline {
 			steps{
 				sh 'whoami'
 				sh 'cat /etc/passwd | cut -d":" -f1'
+				sh 'docker run hello-world'
 				sh 'docker build -t app .'
 			}
 		}
