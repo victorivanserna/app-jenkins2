@@ -17,7 +17,7 @@ pipeline {
 			steps{
 				echo 'Retaggear a stable'
 				sh 'docker tag app:test app:stable'
-				sh 'docker push app:test app:stable'
+				sh 'docker push victorivanserna/app:test app:stable'
 			} 
 		}
 	}
