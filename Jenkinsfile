@@ -17,9 +17,12 @@ pipeline {
 		}
 		stage('Push Registry') {
 			steps{
-				echo 'Retaggear a stable'
-				sh 'docker tag app victorivanserna/app:stable'
-				sh 'docker push victorivanserna/app:stable'
+				echo 'Retaggear la imagen que tenemos como test a stable'
+				withCredentials([usernamePassword(credentialsId: '58b34614-9dd6-4a0c-821d-74e5bedc47fa', passwordVariable: 'password', usernameVariable: 'user')]) {
+					sh 'docker tag app:test victorivanserna/app:stable'
+					sh 'docker push victorivanserna/app:stable'
+				}
+				
 			} 
 		}
 	}
