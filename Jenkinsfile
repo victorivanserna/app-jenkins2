@@ -3,9 +3,6 @@ pipeline {
 	stages{
 		stage('Build') {
 			steps{
-				sh 'whoami'
-				sh 'cat /etc/passwd | cut -d":" -f1'
-				sh 'docker run hello-world'
 				sh 'docker build -t app .'
 				echo 'BUILD'
 			}
@@ -13,11 +10,15 @@ pipeline {
 		stage('Test') {
 			steps{
 				echo 'TEST'
+				sh '/bin/nc -vz localhost 22'
+				sh '/bin/nc -vz localhost 22'
 			}
 		}
 		stage('Deploy') {
 			steps{
 				echo 'DEPLOY'
+				sh 'docker tag app:test app:stable'
+				sh 'docker push app:test app:stable'
 			} 
 		}
 	}
